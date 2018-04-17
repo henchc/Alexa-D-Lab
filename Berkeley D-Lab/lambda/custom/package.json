@@ -1,0 +1,11 @@
+{
+  "name": "skill-berkeley-d-lab",
+  "version": "1.0.0",
+  "description": "Alexa Skill for UC Berkeley D-Lab",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.0"
+  }
+}
