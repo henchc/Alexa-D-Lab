@@ -1,7 +1,7 @@
 {
     "interactionModel":{
         "languageModel":{
-            "invocationName":"hello world",
+            "invocationName":"berkeley d lab",
             "types":[],
             "intents":[
                 {
@@ -17,28 +17,38 @@
                   "samples": []
                 },
                 {
-                    "name":"HelloWorldIntent",
+                    "name":"GetEventsIntent",
                     "slots":[
 
                     ],
                     "samples":[
-                        "hello",
-                        "say hello",
-                        "say hello world"
+                        "what's going on",
+                        "what's happening",
+                        "what is going on",
+                        "what is happening",
+                        "what events are there",
+                        "what workshops are there"
                     ]
                 },
                 {
-                    "name":"MyNameIsIntent",
+                    "name":"GetEventsDateIntent",
                     "slots":[
                         {
-                            "name":"name",
-                            "type":"AMAZON.US_FIRST_NAME"
+                            "name":"date",
+                            "type":"AMAZON.DATE"
                         }
                     ],
                     "samples":[
-                        "my name is {name}",
-                        "i am {name}",
-                        "you can call me {name}"
+                        "what's going on {date}",
+                        "what's happening {date}",
+                        "what is going on {date}",
+                        "what is happening {date}",
+                        "what events are there {date}",
+                        "what happened {date}",
+                        "what was happening {date}",
+                        "what events were there {date}",
+                        "what workshops were there {date}",
+                        "what workshops are there {date}"
                     ]
                 }
             ]

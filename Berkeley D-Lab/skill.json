@@ -3,18 +3,18 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "Sample Short Description",
+          "summary": "This simple skill reads the calendar events for the UC Berkeley D-Lab.",
           "examplePhrases": [
-            "Alexa open hello world",
-            "Alexa tell hello world I am Jeff",
-            "Alexa tell hello world my name is Peter"
+            "Alexa open berkeley d-lab",
+            "Alexa ask berkeley d-lab what's going on today",
+            "Alexa ask berkeley d-lab what's going on tomorrow"
           ],
           "name": "Berkeley D-Lab",
-          "description": "Sample Full Description"
+          "description": "This simple skill reads the calendar events for the UC Berkeley D-Lab. The default reads out the events for the current day, otherwise a different date can be specified."
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
+      "testingInstructions": "See above example phrases.",
       "category": "EDUCATION_AND_REFERENCE",
       "distributionCountries": []
     },

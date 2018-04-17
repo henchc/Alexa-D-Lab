@@ -2,7 +2,7 @@
 
 // load packages
 var Alexa = require("alexa-sdk");
-var https = require("http");
+var http = require("http");
 var cheerio = require("cheerio");
 
 // main handler to execute Alexa
@@ -20,7 +20,7 @@ var handlers = {
     'GetEventsIntent': function () {
         this.emit('GetEvents');
     },
-    'GetEventDateIntent': function () {
+    'GetEventsDateIntent': function () {
         this.emit('GetEventsDate');
     },
     'GetEvents': function () {
@@ -28,7 +28,7 @@ var handlers = {
         // general assume today
         var myRequest = todayDate();
 
-        httpsGet(myRequest, (myResult) => {
+        httpGet(myRequest, (myResult) => {
                 console.log("sent     : " + myRequest);
                 console.log("received : " + myResult);
 
@@ -52,7 +52,7 @@ var handlers = {
         } else {
             myRequest = verifyDate(myRequest);
 
-            httpsGet(myRequest, (myResult) => {
+            httpGet(myRequest, (myResult) => {
                     console.log("sent     : " + myRequest);
                     console.log("received : " + myResult);
 
@@ -71,7 +71,7 @@ var handlers = {
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent' : function() {
-        this.response.speak("You can try: 'ask berkeley d-lab what's going on today', or 'ask berkeley d-lab what's going on tomorrow', or 'ask berkeley d-lab what happened yesterday'.");
+        this.response.speak("You can try: 'ask berkeley d lab what's going on today', or 'ask berkeley d lab what's going on tomorrow', or 'ask berkeley d lab what happened yesterday'.");
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent' : function() {
@@ -79,7 +79,7 @@ var handlers = {
         this.emit(':responseReady');
     },
     'Unhandled' : function() {
-        this.response.speak("Sorry, I didn't get that. You can try: 'ask berkeley d-lab what's going on today', or 'ask berkeley d-lab what's going on tomorrow', or 'ask berkeley d-lab what happened yesterday'.");
+        this.response.speak("Sorry, I didn't get that. You can try: 'ask berkeley d lab what's going on today', or 'ask berkeley d lab what's going on tomorrow', or 'ask berkeley d lab what happened yesterday'.");
         this.emit(':responseReady');
     }
 };
@@ -116,23 +116,37 @@ function httpGet(userRequest, callback) {
                 var eventType = $(this).find('div.views-field.views-field-type').text().trim();
                 eventType = eventType.replace('Groups', 'Group');
                 var eventTitle = $(this).find('div.views-field.views-field-title').text().trim();
+                eventTitle = eventTitle.replace(/FUN/g, 'Fun')
                 var eventTime = $(this).find('span.date-display-single').text().trim();
 
-                alexaText += 'From ' + eventTime + ' there is the ' + eventType.toLowerCase() + ': ' + eventTitle + '.'
-                alexaText += '\n'
+                alexaText += 'From ' + eventTime + ' there is the ' + eventType.toLowerCase() + ': ' + eventTitle + '.';
+                alexaText += '\n';
             });
 
             if (userRequest == todayDate()) {
                 alexaText = 'There are ' + numEvents + ' events today.\n' + alexaText.trim();
-            } else{
-                alexaText = 'There are ' + numEvents + ' events on ' + formatDate(userRequest) + '.\n' + alexaText.trim()   
+            } else if (differenceInDays(userRequest, todayDate()) < 0) {
+                alexaText = 'There are ' + numEvents + ' events on ' + formatDate(userRequest) + '.\n' + alexaText.trim();   
+            } else {
+                alexaText = 'There are ' + numEvents + ' events on ' + formatDate(userRequest) + '.\n' + alexaText.trim();
+                alexaText = alexaText.replace(/are/g, 'were').replace(/is/g, 'was');
             }
 
+            alexaText = alexaText.replace(/&/g, 'and').replace(/!/g, '');
             callback(alexaText);
 
         });
     });
     req.end();
+}
+
+// difference in days of two date strings
+function differenceInDays(dateString1, dateString2) {
+    var rDateObj = new Date(dateString1);
+    var tDateObj = new Date(dateString2);
+    var difference = tDateObj.getTime() - rDateObj.getTime()
+    var differenceDays = Math.ceil(difference / (1000 * 3600 * 24));
+    return differenceDays;
 }
 
 // format for speaking
