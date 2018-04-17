@@ -116,7 +116,7 @@ function httpGet(userRequest, callback) {
                 var eventType = $(this).find('div.views-field.views-field-type').text().trim();
                 eventType = eventType.replace('Groups', 'Group');
                 var eventTitle = $(this).find('div.views-field.views-field-title').text().trim();
-                eventTitle = eventTitle.replace(/FUN/g, 'Fun')
+                eventTitle = eventTitle.replace(/FUN/g, 'Fun');
                 var eventTime = $(this).find('span.date-display-single').text().trim();
 
                 alexaText += 'From ' + eventTime + ' there is the ' + eventType.toLowerCase() + ': ' + eventTitle + '.';
@@ -144,7 +144,7 @@ function httpGet(userRequest, callback) {
 function differenceInDays(dateString1, dateString2) {
     var rDateObj = new Date(dateString1);
     var tDateObj = new Date(dateString2);
-    var difference = tDateObj.getTime() - rDateObj.getTime()
+    var difference = tDateObj.getTime() - rDateObj.getTime();
     var differenceDays = Math.ceil(difference / (1000 * 3600 * 24));
     return differenceDays;
 }
@@ -177,7 +177,7 @@ function todayDate() {
 function differenceInDays(dateString1, dateString2) {
     var rDateObj = new Date(dateString1);
     var tDateObj = new Date(dateString2);
-    var difference = tDateObj.getTime() - rDateObj.getTime()
+    var difference = tDateObj.getTime() - rDateObj.getTime();
     var differenceDays = Math.ceil(difference / (1000 * 3600 * 24));
     return differenceDays;
 }

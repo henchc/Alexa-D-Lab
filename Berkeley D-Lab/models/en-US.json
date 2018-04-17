@@ -26,8 +26,8 @@
                         "what's happening",
                         "what is going on",
                         "what is happening",
-                        "what events are there",
-                        "what workshops are there"
+                        "what events there are",
+                        "what workshops there are"
                     ]
                 },
                 {
@@ -46,9 +46,9 @@
                         "what events are there {date}",
                         "what happened {date}",
                         "what was happening {date}",
-                        "what events were there {date}",
-                        "what workshops were there {date}",
-                        "what workshops are there {date}"
+                        "what events there were {date}",
+                        "what workshops there were {date}",
+                        "what workshops there are {date}"
                     ]
                 }
             ]
