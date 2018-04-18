@@ -71,7 +71,7 @@ var handlers = {
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent' : function() {
-        this.response.speak("You can try: 'ask berkeley d lab what's going on today', or 'ask berkeley d lab what's going on tomorrow', or 'ask berkeley d lab what happened yesterday'.");
+        this.response.speak("You can try: 'ask berkeley d. lab what's going on today', or 'ask berkeley d. lab what's going on tomorrow', or 'ask berkeley d. lab what happened yesterday'.");
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent' : function() {
@@ -79,7 +79,7 @@ var handlers = {
         this.emit(':responseReady');
     },
     'Unhandled' : function() {
-        this.response.speak("Sorry, I didn't get that. You can try: 'ask berkeley d lab what's going on today', or 'ask berkeley d lab what's going on tomorrow', or 'ask berkeley d lab what happened yesterday'.");
+        this.response.speak("Sorry, I didn't get that. You can try: 'ask berkeley d. lab what's going on today', or 'ask berkeley d. lab what's going on tomorrow', or 'ask berkeley d. lab what happened yesterday'.");
         this.emit(':responseReady');
     }
 };

@@ -5,9 +5,9 @@
         "en-US": {
           "summary": "This simple skill reads the calendar events for the UC Berkeley D-Lab.",
           "examplePhrases": [
-            "Alexa ask berkeley d lab what's going on today",
-            "Alexa ask berkeley d lab what's going on tomorrow",
-            "Alexa ask berkeley d lab what happened yesterday"
+            "Alexa ask berkeley d. lab what's going on today",
+            "Alexa ask berkeley d. lab what's going on tomorrow",
+            "Alexa ask berkeley d. lab what happened yesterday"
           ],
           "name": "Berkeley D-Lab",
           "description": "This simple skill reads the calendar events for the UC Berkeley D-Lab. The default reads out the events for the current day, otherwise a different date can be specified."
